@@ -1,8 +1,13 @@
 project Flight is
 
-   for Source_Dirs use (".");
-   for Object_Dir use "build";
    for Main use ("main.adb");
-
+   for Object_Dir use "build";
+   for Source_Dirs use (".", "../../../CubedOS/src", "../../../CubedOS/src/modules", "../../../CubedOS/src/library");
+   for Languages use ("Ada");                        
+       
+   package Compiler is          
+      for Default_Switches ("ada") use ("-fstack-check", "-gnatwa", "-gnata", "-g");
+   end Compiler;           
+   
 end Flight;
 
