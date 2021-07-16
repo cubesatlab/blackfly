@@ -1,0 +1,8 @@
+project Flight is
+
+   for Source_Dirs use (".");
+   for Object_Dir use "build";
+   for Main use ("main.adb");
+
+end Flight;
+
