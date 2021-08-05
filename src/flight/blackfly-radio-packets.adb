@@ -6,12 +6,15 @@
 --------------------------------------------------------------------------------
 pragma SPARK_Mode(On);
 
-with Radio_Port;
+with BlackFly.Radio.Port;
 
 package body Blackfly.Radio.Packets
   with
     Refined_State => (State => (Scanner_State, Transmitter_State))
 is
+
+   type Incoming_Record is new CubedOS.Lib.Bounded_Strings.Bounded_String(265);
+   type Outgoing_Record is new CubedOS.Lib.Bounded_Strings.Bounded_String(265);
 
    ------------------------------------------------------
    -- Constants

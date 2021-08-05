@@ -1,16 +1,16 @@
 --------------------------------------------------------------------------------
 -- FILE   : radio.ads
--- SUBJECT: Specification for control program interface to the radio.
--- AUTHOR : (C) Copyright 2015 by Vermont Technical College
+-- SUBJECT: Specification for the interface to the radio.
+-- AUTHOR : (C) Copyright 2021 by Vermont Technical College and the University of Vermont
 --
 --------------------------------------------------------------------------------
 pragma SPARK_Mode(On);
 
-with Bounded_Strings;
-with Utility;
-with Radio_Port;
+with CubedOS.Lib.Bounded_Strings;
+--with Utility;
+with BlackFly.Radio.Port;
 
-use type Utility.Byte_Type;
+--use type Utility.Byte_Type;
 
 package Blackfly.Radio.Packets
   with Abstract_State => State
