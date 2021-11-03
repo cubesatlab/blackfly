@@ -1,38 +1,35 @@
 \chapter{External Interface Requirements}
+\label{chap:external-interface}
+
 \section{Command and Telemetry Dictionaries}
-The user interface of a spacecraft can be described as the set of
-commands that can be sent to the spacecraft and the telemetry that is
-returned by the spacecraft. These are described in the form of
-dictionaries.
+
+The user interface of a spacecraft can be described as the set of commands that can be sent to
+the spacecraft and the telemetry that is returned by the spacecraft. These are described in the
+form of dictionaries.
 
 \begin{description}
-\item[{\varcmd}.Length] Is there a limit to how much data can be in a
-  command?
-\item[{\varcmd}.Formatting] Are there any requirements about how
-  commands must be packaged and formatted?
-\item[{\vartelem}.Length] Is there a limit to how much data can be in
-  a telemetry data unit?
-\item[{\vartelem}.Formatting] Are there any requirements about how
-  telemetry data units must be packaged?
+\item[{\varcmd}.Length] \question{Is there a limit to how much data can be in a command?}
+\item[{\varcmd}.Formatting] \question{Are there any requirements about how commands must be
+    packaged and formatted?}
+\item[{\vartelem}.Length] \question{Is there a limit to how much data can be in a telemetry data
+    unit?}
+\item[{\vartelem}.Formatting] \question{Are there any requirements about how telemetry data
+    units must be packaged?}
 \end{description}
 
-The command dictionary lists all the commands to which the spacecraft
-must respond, along with the type and meaning of any command arguments
-and the semantics of the commands. Is there a standard format we
-should use to facilitate interaction with specific ground software or
-to facilitate generation by specific tools?
+The command dictionary lists all the commands to which the spacecraft must respond, along with
+the type and meaning of any command arguments and the semantics of the commands. \question{Is
+  there a standard format we should use to facilitate interaction with specific ground software
+  or to facilitate generation by specific tools?}
 
-TODO: Define command dictionary here (or maybe in an external
-document).
+TODO: Define command dictionary here (or maybe in an external document).
 
-The telemetry dictionary lists all the telemetry data units the
-spacecraft can produce, along with the type and meaning of the data
-arguments. Is there a standard format we should use to facilitate
-interaction with specific ground software or to facilitate acceptance
-by specific tools?
+The telemetry dictionary lists all the telemetry data units the spacecraft can produce, along
+with the type and meaning of the data arguments. \question{Is there a standard format we should
+  use to facilitate interaction with specific ground software or to facilitate acceptance by
+  specific tools?}
 
-TODO: Define telemetry dictionary here (or maybe in an external
-document).
+TODO: Define telemetry dictionary here (or maybe in an external document).
 
 \section{Hardware Interfaces}
 % Describe the logical and physical characteristics of each interface

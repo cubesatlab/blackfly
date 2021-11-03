@@ -1,4 +1,6 @@
 \chapter{Nonfunctional Requirements}
+\label{chap:nonfunctional}
+
 \section{Performance Requirements}
 % If there are performance requirements for the product under various
 % circumstances, state them here and explain their rationale, to help
@@ -26,6 +28,11 @@
 % product’s design or use. Define any safety certifications that must
 % be satisfied.
 
+\question{To what extent should we be concerned about people on the ground a) monitoring the
+  traffic to/from the spacecraft(s), and b) taking control of the spacecraft(s) by sending
+  commands of their own? In other words: do we need to have confidentiality or data integrity in
+  the earth to spacecraft communications link? What about the spacecraft to spacecraft link?}
+
 \section{Software Quality Attributes}
 % Specify any additional quality characteristics for the product that
 % will be important to either the customers or the developers. Some to
@@ -35,6 +42,12 @@
 % be specific, quantitative, and verifiable when possible. At the
 % least, clarify the relative preferences for various attributes, such
 % as ease of use over ease of learning.
+
+\begin{description}
+\item[Quality.AORTE] The codebase shall be written in \SPARK\ and proved to be free of runtime
+  errors in the sense meant by \SPARK. Certain, limited exceptions are allowed, but they must be
+  documented.
+\end{description}
 
 \section{Business Rules}
 % List any operating principles about the product, such as which

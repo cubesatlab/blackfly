@@ -1,8 +1,11 @@
-# Object file
+# Object files.
 *.o
 
-# Ada Library Information
+# Ada Library Information.
 *.ali
 
-# Build artifacts
+# Build artifacts.
 build
+
+# Documentation temporary files.
+doc/requirements/blackfly-requirements.tex
