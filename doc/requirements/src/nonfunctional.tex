@@ -2,62 +2,131 @@
 \label{chap:nonfunctional}
 
 \section{Performance Requirements}
-% If there are performance requirements for the product under various
-% circumstances, state them here and explain their rationale, to help
-% the developers understand the intent and make suitable design
-% choices. Specify the timing relationships for real time
-% systems. Make such requirements as specific as possible. You may
-% need to state performance requirements for individual functional
-% requirements or features.
+
+\question{How much space is necessary to buffer telemetry on the spacecraft?}
+
+\question{How much space is necessary to buffer commands on the spacecraft?}
+
+\question{What temporaly accuracy is required for timestamping telemetry?}
+
+\question{What temporaly accuracy is required for issuing commands?}
+
+\question{Are there any latency requirements regarding the time between command issuance and
+  command completion? This might be better documented in the command dictionary.}
+
+\question{Are there any CPU power consumption requirements we need to know about? Sleep time?}
 
 \section{Safety Requirements}
-% Specify those requirements that are concerned with possible loss,
-% damage, or harm that could result from the use of the
-% product. Define any safeguards or actions that must be taken, as
-% well as actions that must be prevented. Refer to any external
-% policies or regulations that state safety issues that affect the
-% product’s design or use. Define any safety certifications that must
-% be satisfied.
+
+\question{What are our de-orbiting requirements?}
+
+\question{What does ``safe mode'' look like? For example, if there is failure after deployment,
+  we want to avoid damaging other spacecraft in our vicinity.}
+
+\question{How long do we have to wait after deployment before we can do things like fire the
+  thrusters or deploy the antenna?}
+
+\question{In general, what is the deployment sequence? This might be more properly a functional
+  requirement.}
 
 \section{Security Requirements}
-% Specify those requirements that are concerned with possible loss,
-% damage, or harm that could result from the use of the
-% product. Define any safeguards or actions that must be taken, as
-% well as actions that must be prevented. Refer to any external
-% policies or regulations that state safety issues that affect the
-% product’s design or use. Define any safety certifications that must
-% be satisfied.
 
 \question{To what extent should we be concerned about people on the ground a) monitoring the
   traffic to/from the spacecraft(s), and b) taking control of the spacecraft(s) by sending
   commands of their own? In other words: do we need to have confidentiality or data integrity in
   the earth to spacecraft communications link? What about the spacecraft to spacecraft link?}
 
+\question{Do we want to require operators on the ground to authenticate to the spacecraft before
+  they can interact with it (i.e., send commands or receive telemetry)?}
+
 \section{Software Quality Attributes}
-% Specify any additional quality characteristics for the product that
-% will be important to either the customers or the developers. Some to
-% consider are: adaptability, availability, correctness, flexibility,
-% interoperability, maintainability, portability, reliability,
-% reusability, robustness, testability, and usability. Write these to
-% be specific, quantitative, and verifiable when possible. At the
-% least, clarify the relative preferences for various attributes, such
-% as ease of use over ease of learning.
+
+In what follows the term \newterm{codebase} refers to the code that is ultimately loaded onto
+the spacecraft that flies in space. This document does not assert any quality rules for
+supporting code (that does not fly in space), although it is encouraged to follow similar rules
+for such code when feasible.
 
 \begin{description}
+\item[Quality.FlowErrors] The codebase shall be free of flow errors in the sense meant by
+  \SPARK. Note that without this, Quality.AORTE can't be verified by \SPARK, even in principle.
+
 \item[Quality.AORTE] The codebase shall be written in \SPARK\ and proved to be free of runtime
-  errors in the sense meant by \SPARK. Certain, limited exceptions are allowed, but they must be
-  documented.
+  errors in the sense meant by \SPARK. Certain, limited exceptions are allowed, but they shall
+  be documented using justifications in the source files.
+
+\item[Quality.Functional] We rely on conventional unit and integration testing to verify
+  functional properties of the codebase. These requirements \emph{do not} require that
+  functional properties be proved by \SPARK. However, using \SPARK\ to prove functional
+  properties is encouraged where feasible, and may be required, to some extent, in a future
+  version of these requirements.
+
+\item[Quality.Testability] Library components of the codebase and easily factored module
+  sub-functionality shall be tested by unit tests that can be executed and verified
+  automatically. Full module functionality may be tested by manual tests (due to the nature of
+  CubedOS modules), although finding a way to verify their behavior automatically would be
+  desirable. The manual tests do not relax the Quality.Coverage requirement (indeed, the manual
+  tests will be needed to meet the requirement).
+
+\item[Quality.Coverage] Test coverage shall include the execution of every line of code in the
+  codebase by some test, as documented by the output of a suitable coverage tool (such as
+  \command{gcov}).
+
+\item[Quality.Style] The codebase shall be written according to an agreed-upon style using a
+  style checking tool to enforce that style. The details of the style are not specified here,
+  but are instead described in the style checking tool's configuration file.
+
+\item[Quality.Documentation] The codebase shall be documented at two levels: The public
+  interface of every package shall be documented using a standard API documentation extraction
+  tool such as \command{gnatdoc}. The higher level functionalilty of the codebase shall be
+  documented using ordinary English prose.
+  
+\item[Quality.CI] A continuous integration server shall be configured to perform the following
+  steps on at least a daily basis:
+  \begin{itemize}
+  \item Verify clean, warning-free compliation of the codebase and test programs.
+  \item Verify Quality.FlowErrors
+  \item Verify Quality.AORTE
+  \item Verify error-free execution of the unit and integration tests (to the greatest extent
+    possible... some tests might be difficult to automate).
+  \item Verify Quality.Coverage
+  \item Verify Quality.Style
+  \item Extract the API documentation (see Quality.Documentation)
+  \item Verify error-free compilation of the high level documentation (see Quality.Documenation)
+  \end{itemize}
+
+\item[Quality.Commit] All commits to the codebase shall compile without error, all tests shall
+  pass, and all style rules shall pass or else the commit is considered ``invalid'' and must be
+  corrected immediately. It is understood, however, that compile-time warnings,
+  Quality.FlowErrors, Quality.AORTE, and Quality.Coverage may be temporarly unsatisfied during
+  the development process.
+
+\item[Quality.Reusability] Non-hardware specific components of the codebase shall be written so
+  they could potentially be reused in other missions. Hardware specific components shall be
+  written so they could potentially be reused in other missions using the same hardware.
+
 \end{description}
 
 \section{Business Rules}
-% List any operating principles about the product, such as which
-% individuals or roles can perform which functions under specific
-% circumstances. These are not functional requirements in themselves,
-% but they may imply certain functional requirements to enforce the
-% rules.
+
+% List any operating principles about the product, such as which individuals or roles can
+% perform which functions under specific circumstances. These are not functional requirements in
+% themselves, but they may imply certain functional requirements to enforce the rules.
 
 \section{Other Requirements}
-% Define any other requirements not covered elsewhere in the SRS. This
-% might include database requirements, internationalization
-% requirements, legal requirements, reuse objectives for the project,
-% and so on. Add any new sections that are pertinent to the project.
+
+\question{Somewhere we need to specify what software telemetry is required. This might be better
+  done where the telemetry dictionary is specified.}
+
+\begin{description}
+\item[Other.SourceFormat] Source files of the codebase shall be Unicode files encoded with
+  UTF-8. Latin and Greek letters are allowed in identifier names (and digits, etc., but no other
+  letters). This is useful for writing code that directly translates mathematical equations.
+
+\item[Other.License] \question{What license should we use for the codebase?}
+
+\item[Other.DataFormat] \question{Do we have requirements for the data format to use for
+    telemetry data?}
+
+\item[Other.GroundSystem] \question{To what extent are we writing ground system software? If we
+    are it might need an separate requirements document of its own.}
+\end{description}
