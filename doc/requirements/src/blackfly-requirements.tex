@@ -21,3 +21,28 @@
 \long\def\question#1{\marginpar{QST}{\small \ \ $\langle\langle\langle$\
 {#1}\
     $\rangle\rangle\rangle$\ \ }} 
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\input{src/intro.tex}
+\input{src/description.tex}
+\input{src/interface.tex}
+\input{src/system_features.tex}
+\input{src/nonfunctional.tex}
+
+\appendix
+\input{src/glossary.tex}
+\input{src/analysis_models.tex}
+\input{src/tbd.tex}
+
+% -----------
+% Bibliography
+% ------------
+
+%\bibliographystyle{plain}
+%\bibliography{src/references}
+
+\end{document}
