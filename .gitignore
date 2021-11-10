@@ -6,6 +6,3 @@
 
 # Build artifacts.
 build
-
-# Documentation temporary files.
-doc/requirements/blackfly-requirements.tex
