@@ -20,6 +20,7 @@
 % diagram, is often effective.
 
 \section{User Classes and Characteristics}
+
 % Identify the various user classes that you anticipate will use this
 % product. User classes may be differentiated based on frequency of
 % use, subset of product functions used, technical expertise, security
@@ -28,6 +29,21 @@
 % may pertain only to certain user classes. Distinguish the most
 % important user classes for this product from those who are less
 % important to satisfy.
+
+Roughly, we identify the following user classes.
+\begin{enumerate}
+\item The users interested in the results (telemetry) of the formation flying demonstration
+  (important).
+\item The CubedOS Laboratory has an interest in the performance of CubedOS (software telemetry)
+  (important).
+\item The amateur radio community may be interested in helping us gather telemetry and thus
+  constitutes a user class in the sense that we will have requirements related to data formats,
+  etc. (important).
+\item Benchmark Space Systems (perhaps having interest in telemetry related to the thrusters).
+\item Future users of distributed drone systems have an interest in the technology we are
+  demonstrating here.
+\end{enumerate}
+\question{What, if anything, do the UVM students get from this project? Are they a user class?}
 
 \section{Operating Environment}
 In this section we describe the environment in which the software will
@@ -69,11 +85,25 @@ the software must work around them or within them.
 % example, if the customer’s organization will be responsible for
 % maintaining the delivered software).
 
+\begin{enumerate}
+\item The system shall use standard amateur radio communications protocols so that the amateur
+  radio community can assist in tracking and data gathering. \question{Are there any security
+    implications related to this?}
+\item ITAR restrictions must be followed.
+\end{enumerate}
+
 \section{User Documentation}
 % List the user documentation components (such as user manuals,
 % on-line help, and tutorials) that will be delivered along with the
 % software. Identify any known user documentation delivery formats or
 % standards.
+
+\begin{enumerate}
+\item The CubedOS documentation shall be updated to reflect any developments made to the kernel
+  or the core modules.
+\item Any CubedOS device servers shall be documented so that other mission can potentially reuse
+  them.
+\end{enumerate}
 
 \section{Assumptions and Dependencies}
 % List any assumed factors (as opposed to known facts) that could
@@ -86,3 +116,10 @@ the software must work around them or within them.
 % to reuse from another project, unless they are already documented
 % elsewhere (for example, in the vision and scope document or the
 % project plan).
+
+\begin{enumerate}
+\item It is the intention to use Simulink (and MATLAB) to model the swarm algorithm and then
+  generate \SPARK\ using QGen from that model.
+\item This project has a dependency on various (to enumerate later) Ada/\SPARK\ tools from
+  AdaCore.
+\end{enumerate}
