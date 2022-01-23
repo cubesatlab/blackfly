@@ -1,4 +1,6 @@
 \chapter{Overall Description}
+\label{chapt-description}
+
 \section{Product Perspective}
 % Describe the context and origin of the product being specified in
 % this SRS. For example, state whether this product is a follow-on
@@ -32,46 +34,23 @@
 
 Roughly, we identify the following user classes.
 \begin{enumerate}
-\item The users interested in the results (telemetry) of the formation flying demonstration
-  (important).
-\item The CubedOS Laboratory has an interest in the performance of CubedOS (software telemetry)
-  (important).
-\item The amateur radio community may be interested in helping us gather telemetry and thus
-  constitutes a user class in the sense that we will have requirements related to data formats,
-  etc. (important).
+\item The users interested in the results (telemetry) of the formation flying demonstration (important).
+\item The CubedOS Laboratory has an interest in the performance of CubedOS (software telemetry) (important).
+\item The amateur radio community may be interested in helping us gather telemetry and thus constitutes a user class in the sense that we will have requirements related to data formats, etc. (important).
 \item Benchmark Space Systems (perhaps having interest in telemetry related to the thrusters).
-\item Future users of distributed drone systems have an interest in the technology we are
-  demonstrating here.
+\item Future users of distributed drone systems have an interest in the technology we are demonstrating here.
 \end{enumerate}
 \question{What, if anything, do the UVM students get from this project? Are they a user class?}
 
 \section{Operating Environment}
-In this section we describe the environment in which the software will
-operate. Here ``environment'' refers to both the hardware and software
-environment. These requirements are constraints on the software since
-the software must work around them or within them.
+In this section we describe the environment in which the software will operate. Here ``environment'' refers to both the hardware and software environment. These requirements are constraints on the software since the software must work around them or within them.
 
 \begin{description}
-\item[{\varenv}.Processor] The software shall run on an ARM
-  architecture processor.  What are the CPU details?
+\item[{\varenv}.Processor] The software shall run on an ARM architecture processor.  What are the CPU details?
 \item[{\varenv}.Memory] What memory constraints exist for the system?
-\item[{\varenv}.Storage] What non-volatile, read/write storage
-  constraints exist for the system?
-\item[{\varenv}.OS] What underlying operating system will be used?
-  There has been discussion at VTC about designing for a CubedOS/CFS
-  hybrid system. The idea would be to use CubedOS as the primary
-  environment but bridge to CFS for some minor, but still interesting
-  functionality. This would allow us to demonstrate a CubedOS/CFS
-  bridge (to be constructed), which would be important for generating
-  interest in CubedOS in the CFS community.
-\item[{\varenv}.Libraries] Are there any particular libraries that
-  must (or should) be used?
-\item[{\varenv}.Power] Are there any power requirements the software
-  needs to support? For example: required CPU sleep time. Requirements
-  about managing the power of other spacecraft components are
-  specified elsewhere since those requirements are about what the
-  software must do rather than being constraints on what the software
-  itself must work within.
+\item[{\varenv}.Storage] What non-volatile, read/write storage constraints exist for the system?
+\item[{\varenv}.OS] What underlying operating system will be used? There has been discussion at VTC about designing for a CubedOS/CFS hybrid system. The idea would be to use CubedOS as the primary environment but bridge to CFS for some minor, but still interesting functionality. This would allow us to demonstrate a CubedOS/CFS bridge (to be constructed), which would be important for generating interest in CubedOS in the CFS community. \item[{\varenv}.Libraries] Are there any particular libraries that must (or should) be used?
+\item[{\varenv}.Power] Are there any power requirements the software needs to support? For example: required CPU sleep time. Requirements about managing the power of other spacecraft components are specified elsewhere since those requirements are about what the software must do rather than being constraints on what the software itself must work within.
 \end{description}
 
 \section{Design and Implementation Constraints}
@@ -86,9 +65,7 @@ the software must work around them or within them.
 % maintaining the delivered software).
 
 \begin{enumerate}
-\item The system shall use standard amateur radio communications protocols so that the amateur
-  radio community can assist in tracking and data gathering. \question{Are there any security
-    implications related to this?}
+\item The system shall use standard amateur radio communications protocols so that the amateur radio community can assist in tracking and data gathering. \question{Are there any security implications related to this?}
 \item ITAR restrictions must be followed.
 \end{enumerate}
 
@@ -99,10 +76,8 @@ the software must work around them or within them.
 % standards.
 
 \begin{enumerate}
-\item The CubedOS documentation shall be updated to reflect any developments made to the kernel
-  or the core modules.
-\item Any CubedOS device servers shall be documented so that other mission can potentially reuse
-  them.
+\item The CubedOS documentation shall be updated to reflect any developments made to the kernel or the core modules.
+\item Any CubedOS device servers shall be documented so that other mission can potentially reuse them.
 \end{enumerate}
 
 \section{Assumptions and Dependencies}
@@ -118,8 +93,6 @@ the software must work around them or within them.
 % project plan).
 
 \begin{enumerate}
-\item It is the intention to use Simulink (and MATLAB) to model the swarm algorithm and then
-  generate \SPARK\ using QGen from that model.
-\item This project has a dependency on various (to enumerate later) Ada/\SPARK\ tools from
-  AdaCore.
+\item It is the intention to use Simulink (and MATLAB) to model the swarm algorithm and then generate \SPARK\ using QGen from that model.
+\item This project has a dependency on various (to enumerate later) Ada/\SPARK\ tools from AdaCore.
 \end{enumerate}
