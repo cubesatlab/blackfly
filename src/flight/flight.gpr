@@ -1,13 +1,43 @@
-project Flight is
+project Flight is       
+               
+   type Platform_Type is ("CubeSat", "Mock", "Check");  
+   Platform : Platform_Type := external("BUILD", "CubeSat");    
+            
+   case Platform is     
+      when "CubeSat" => 
+         for Main use ("main.adb");
+         for Object_Dir use "build/CubeSat";
+         for Source_Dirs use (".", "CubeSat", "../../../CubedOS/src", "../../../CubedOS/src/modules", "../../../CubedOS/src/library");
+         for Languages use ("Ada", "C");
+         
+      when "Mock" => 
+         for Main use ("main.adb");
+         for Object_Dir use "build/Mock";
+         for Source_Dirs use (".", "Mock", "../../../CubedOS/src", "../../../CubedOS/src/modules", "../../../CubedOS/src/library");
+         for Languages use ("Ada", "C");
+   
+      when "Check" =>   
+         for Main use ("main.adb");
+         for Object_Dir use "build/Check";
+         for Source_Dirs use (".", "Check", "../../../CubedOS/src", "../../../CubedOS/src/modules", "../../../CubedOS/src/library");
+         for Languages use ("Ada");
+   end case;
 
-   for Main use ("main.adb");
-   for Object_Dir use "build";
-   for Source_Dirs use (".", "../../../CubedOS/src", "../../../CubedOS/src/modules", "../../../CubedOS/src/library");
-   for Languages use ("Ada");                        
+
+   package Compiler is  
+      case Platform 
+         when "CubeSat" =>
+            for Default_Switches ("ada") use ("-gnatwa"); 
+         when "Mock" =>          
+            for Default_Switches ("ada") use ("-fstack-check", "-gnatwa", "-gnata", "-g"); 
+         when "Check" =>         
+            for Default_Switches ("ada") use ("-fstack-check", "-gnatwa", "-gnata", "-g"); 
+       end case; 
+   end Compiler; 
        
-   package Compiler is          
-      for Default_Switches ("ada") use ("-fstack-check", "-gnatwa", "-gnata", "-g");
-   end Compiler;           
+   package Prove is     
+      for Switches use ("-j0"); 
+   end Prove;
    
 end Flight;
 
