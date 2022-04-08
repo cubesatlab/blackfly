@@ -1,4 +1,3 @@
-[submodule "cubedos"]
+[submodule "CubedOS"]
 	path = CubedOS
-	url = https://github.com/cubesatlab/cubedos.git
-
+	url = https://github.com/cubesatlab/cubedos
