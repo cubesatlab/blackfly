@@ -1,0 +1,4 @@
+[submodule "cubedos"]
+	path = CubedOS
+	url = https://github.com/cubesatlab/cubedos.git
+
