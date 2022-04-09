@@ -16,10 +16,11 @@ with BlackFly.Radio.Messages;
 pragma Unreferenced(BlackFly.Radio.Messages);
 
 procedure Main is
-
    pragma Priority(System.Priority'First);
    use type Ada.Real_Time.Time;
-   Next_Release : Ada.Real_Time.Time := Ada.Real_Time.Clock + Ada.Real_Time.Milliseconds(1000);
+
+   Start_Time   : constant Ada.Real_Time.Time := Ada.Real_Time.Clock;
+   Next_Release : Ada.Real_Time.Time := Start_Time + Ada.Real_Time.Milliseconds(1000);
 begin
    -- This loop does nothing at the lowest priority. It spends most of its time sleeping.
    loop
