@@ -9,8 +9,10 @@
 --------------------------------------------------------------------------------
 pragma SPARK_Mode(On);
 
-with Message_Manager;  use Message_Manager;
 with System;
+
+with Message_Manager;  use Message_Manager;
+with Name_Resolver;
 
 package BlackFly.Radio.API is
 
@@ -61,15 +63,13 @@ package BlackFly.Radio.API is
    -- reserved as a placeholder and can be used when this feature is not meaningful or useful.
    --
    function A_Request_Encode
-     (Sender_Domain : Domain_ID_Type;
-      Sender     : Module_ID_Type;
+     (Sender_Address : Message_Address;
       Request_ID : Request_ID_Type;
       Priority   : System.Priority := System.Default_Priority) return Message_Record
    with Global => null;
 
    function A_Reply_Encode
-     (Receiver_Domain : Domain_ID_Type;
-      Receiver   : Module_ID_Type;
+     (Receiver_Address : Message_Address;
       Request_ID : Request_ID_Type;
       Status     : Status_Type;
       Priority   : System.Priority := System.Default_Priority) return Message_Record
@@ -82,10 +82,10 @@ package BlackFly.Radio.API is
    -- Message_Type enumeration).
    --
    function Is_A_Request(Message : Message_Record) return Boolean is
-     (Message.Receiver = ID and Message.Message_ID = Message_Type'Pos(A_Request));
+     (Message.Receiver_Address = Name_Resolver.Radio and Message.Message_ID = Message_Type'Pos(A_Request));
 
    function Is_A_Reply(Message : Message_Record) return Boolean is
-     (Message.Sender = ID and Message.Message_ID = Message_Type'Pos(A_Reply));
+     (Message.Sender_Address = Name_Resolver.Radio and Message.Message_ID = Message_Type'Pos(A_Reply));
 
 
    -- The decoding procedures take a message of the appropriate type and then decode its

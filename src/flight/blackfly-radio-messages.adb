@@ -6,6 +6,10 @@
 --------------------------------------------------------------------------------
 pragma SPARK_Mode(On);
 
+-- CubedOS core packages.
+with Message_Manager;
+with Name_Resolver;
+
 with BlackFly.Radio.API;  -- Needed so that the types in the API can be used here.
 
 package body BlackFly.Radio.Messages is
@@ -79,7 +83,7 @@ package body BlackFly.Radio.Messages is
       -- Process_Message.
       --
       loop
-         Message_Manager.Fetch_Message(ID, Incoming_Message);
+         Message_Manager.Fetch_Message(Name_Resolver.Radio.Module_ID, Incoming_Message);
          Process(Incoming_Message);
       end loop;
    end Message_Loop;

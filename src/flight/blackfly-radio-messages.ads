@@ -29,7 +29,7 @@ package BlackFly.Radio.Messages is
    -- pragma Unreferenced(CubedOS.Sample_Module.Messages);
    --
    task Message_Loop is
-      pragma Storage_Size(4 * 1024);
+      -- pragma Storage_Size(4 * 1024);
       pragma Priority(System.Default_Priority);
    end Message_Loop;
 
