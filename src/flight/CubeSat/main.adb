@@ -1,16 +1,18 @@
 --------------------------------------------------------------------------------
 -- FILE   : main.adb
 -- SUBJECT: Main program of the BlackFly flight control software.
--- AUTHOR : (C) Copyright 2021 by Vermont Technical College and the University of Vermont
+-- AUTHOR : (C) Copyright 2022 by Vermont Technical College and the University of Vermont
 --
 --------------------------------------------------------------------------------
+pragma SPARK_Mode(On);
+
 with Ada.Real_Time;
 with System;
 
 -- Bring in the necessary modules, both from CubedOS and from this application.
-
 with BlackFly.Radio.Messages;
 
+-- The modules are unreferenced here, but need to be "with-ed" to make them part of the executable.
 pragma Unreferenced(BlackFly.Radio.Messages);
 
 procedure Main is

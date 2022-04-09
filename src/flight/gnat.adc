@@ -1,0 +1,16 @@
+-- This file contains configuration pragmas used by the entire build.
+--
+-- This file is used by the CubeSat and Mock builds, but not by the Check build. The test
+-- program can use a full Ada runtime system with unrestricted tasking.
+--
+-- SPARK mode is commented out here. Instead the individual files should assert SPARK mode on an
+-- as-needed basis. This allows the CubeSat and Mock builds to have some non-SPARK components
+-- (without having to explicitly turn SPARK mode off) and documents clearly which components are
+-- intended to be in SPARK.
+--
+-- Note that although Blackfly runs on Linux where a full runtime system is available, SPARK
+-- requires Ravenscar (or Jorvik) and sequential partition elaboration.
+--
+pragma Profile(Ravenscar);
+pragma Partition_Elaboration_Policy(Sequential);
+-- pragma SPARK_Mode(On);
